@@ -51,7 +51,7 @@ class ComponentForm extends Component
             $this->updatingSearch();
             $Query = $Query->where('name', 'like', '%' . $this->search . '%');
         }
-        $forms = $Query->where('status', Form::Active)->orderBy('id', 'DESC')->paginate(5);
+        $forms = $Query->where('status', Form::Active)->orderBy('id', 'DESC')->paginate(7);
         return view('livewire.component-form', compact('forms'));
     }
 

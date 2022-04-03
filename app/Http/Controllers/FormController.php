@@ -4,80 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FormController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $forms =  Form::where('status', Form::Active)->get();
+
+        foreach($forms as $form)
+        {
+            $form->image = base64_encode(Storage::get($form->image));
+        }
+
+        return response()->json([
+            'data' => $forms
+        ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
     public function show(Form $form)
     {
-        //
+        return response()->json([
+            'data' => $form
+        ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Form $form)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Form $form)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Form  $form
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Form $form)
     {
         //

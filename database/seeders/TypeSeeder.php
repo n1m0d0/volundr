@@ -15,21 +15,54 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $types = [
-            "Titulo",
-            "Texto",
-            "Texto Multiline",
-            "Seleccion",
-            "Seleccion Multiple",
-            "Fecha",
-            "Imagen",
-            "Firma"
-        ];
+        $new_type = new Type();
+        $new_type->name = "Titulo";
+        $new_type->features = false;
+        $new_type->save();
 
-        foreach ($types as $type) {
-            $new_type = new Type();
-            $new_type->name = $type;
-            $new_type->save();
-        }
+        $new_type = new Type();
+        $new_type->name = "Texto";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Editable";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Editable Multilinea";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Seleccion";
+        $new_type->features = true;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Seleccion Multiple";
+        $new_type->features = true;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Fecha";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Imagen";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Firma";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
+        $new_type->name = "Switch";
+        $new_type->features = true;
+        $new_type->save();
     }
 }

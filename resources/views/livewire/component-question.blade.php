@@ -46,13 +46,6 @@
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
             <div class="m-2">
-                <x-jet-label for="description" value="Descripcion de la Pregunta" />
-                <textarea id="description" wire:model.defer='description'
-                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                    rows="4"></textarea>
-                <x-jet-input-error for="description" class="mt-2" />
-            </div>
-            <div class="m-2">
                 <x-jet-label for="mandatory" value="Obligatorio" />
                 <select id="mandatory" wire:model="mandatory"
                     class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
@@ -125,12 +118,14 @@
                                         <x-fas-trash-can class="w-6 h-6 text-red-500 hover:text-gray-100" />
                                     </a>
                                 </x-tooltip>
-                                <x-tooltip tooltip="Opciones">
-                                    <a href="{{ route('page.option', $question->id) }}" class="cursor-pointer">
-                                        <x-fas-arrow-alt-circle-right
-                                            class="w-6 h-6 text-blue-500 hover:text-gray-100" />
-                                    </a>
-                                </x-tooltip>
+                                @if ($question->type->features == true)
+                                    <x-tooltip tooltip="Opciones">
+                                        <a href="{{ route('page.option', $question->id) }}" class="cursor-pointer">
+                                            <x-fas-arrow-alt-circle-right
+                                                class="w-6 h-6 text-blue-500 hover:text-gray-100" />
+                                        </a>
+                                    </x-tooltip>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

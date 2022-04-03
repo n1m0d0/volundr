@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('form_id');
             $table->unsignedBigInteger('type_id');
             $table->string('name');
-            $table->tinytext('description')->nullable();
             $table->boolean('mandatory');
             $table->integer('order');
             $table->enum('status', [

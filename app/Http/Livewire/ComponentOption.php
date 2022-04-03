@@ -54,7 +54,7 @@ class ComponentOption extends Component
             $this->updatingSearch();
             $Query = $Query->where('name', 'like', '%' . $this->search . '%');
         }
-        $options = $Query->where('question_id', $this->question_id)->where('status', Option::Active)->orderBy('id', 'ASC')->paginate(5);
+        $options = $Query->where('question_id', $this->question_id)->where('status', Option::Active)->orderBy('id', 'ASC')->paginate(7);
         return view('livewire.component-option', compact('options'));
     }
 

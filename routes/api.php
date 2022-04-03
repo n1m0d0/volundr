@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\OptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+Route::post('login', [AuthController::class, "login"]);
+
+Route::get('logout', [AuthController::class, "logout"])->middleware('auth:api');
+Route::get('getUser', [AuthController::class, "getUSer"])->middleware(['auth:api']);
+
+Route::apiResource('form', FormController::class)->middleware('auth:api');
+
+Route::apiResource('question', QuestionController::class)->middleware('auth:api');
+
+Route::apiResource('option', OptionController::class)->middleware('auth:api');
+
+Route::any('/', function(){
+    return response()->json([
+        'error' => 'Bad Request'
+    ], 400);
+})->name('error');

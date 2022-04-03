@@ -25,7 +25,6 @@ class ComponentQuestion extends Component
     public $name_form;
     public $type_id;
     public $name;
-    public $description;
     public $mandatory;
     public $order;
     public $question_id;
@@ -40,7 +39,6 @@ class ComponentQuestion extends Component
     protected $rules = [
         'type_id' => 'required',
         'name' => 'required|max:200',
-        'description' => 'required|max:1000',
         'mandatory' => 'required|boolean',
         'order' => 'required|integer'
     ];
@@ -61,7 +59,7 @@ class ComponentQuestion extends Component
             $this->updatingSearch();
             $Query = $Query->where('name', 'like', '%' . $this->search . '%');
         }
-        $questions = $Query->where('form_id', $this->form_id)->where('status', Question::Active)->orderBy('id', 'ASC')->paginate(5);
+        $questions = $Query->where('form_id', $this->form_id)->where('status', Question::Active)->orderBy('id', 'ASC')->paginate(7);
         $types = Type::where('status', Type::Active)->get();
         return view('livewire.component-question', compact('questions', 'types'));
     }
@@ -74,7 +72,6 @@ class ComponentQuestion extends Component
         $question->form_id = $this->form_id;
         $question->type_id = $this->type_id;
         $question->name = $this->name;
-        $question->description = $this->description;
         $question->mandatory = $this->mandatory;
         $question->order = $this->order;
         $question->save();
@@ -89,7 +86,6 @@ class ComponentQuestion extends Component
         $question = Question::find($id);
         $this->type_id = $question->type_id;
         $this->name = $question->name;
-        $this->description = $question->description;
         $this->mandatory = $question->mandatory;        
         $this->order = $question->order;
 
@@ -104,7 +100,6 @@ class ComponentQuestion extends Component
         $question->form_id = $this->form_id;
         $question->type_id = $this->type_id;
         $question->name = $this->name;
-        $question->description = $this->description;
         $question->mandatory = $this->mandatory;
         $question->order = $this->order;
         $question->save();
@@ -133,7 +128,7 @@ class ComponentQuestion extends Component
 
     public function clear()
     {
-        $this->reset(['type_id', 'name', 'description', 'mandatory', 'order', 'question_id']);
+        $this->reset(['type_id', 'name', 'mandatory', 'order', 'question_id']);
         $this->iteration++;
         $this->action = "create";
     }
