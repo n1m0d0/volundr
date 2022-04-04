@@ -32,7 +32,7 @@ class AuthController extends Controller
             return response()->json([
                 'code' => 401,
                 'error' => 'Unauthorized'
-            ], 401);
+            ], 200);
         }
     }
 
