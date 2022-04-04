@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Form extends Model
+class Event extends Model
 {
     use HasFactory;
-    
+
     const Active = 1;
     const Inactive = 2;
+    const Finalized = 3;
 
-    public function questions()
+    public function form()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(Form::class);
     }
 
-    public function events()
+    public function user()
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(User::class);
     }
 }

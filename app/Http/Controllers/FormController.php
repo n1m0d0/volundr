@@ -15,9 +15,14 @@ class FormController extends Controller
         foreach($forms as $form)
         {
             $form->image = base64_encode(Storage::get($form->image));
+            $form->questions = $form->questions;
+            foreach($form->questions as $question) {
+                $question->options = $question->options;
+            }
         }
 
         return response()->json([
+            'code' => 200,
             'data' => $forms
         ], 200);
     }
