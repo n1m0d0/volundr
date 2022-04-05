@@ -24,6 +24,7 @@ class QuestionController extends Controller
     public function show(Question $question)
     {
         return response()->json([
+            'code' => 200,
             'data' => $question
         ], 200);
     }

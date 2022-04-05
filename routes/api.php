@@ -33,6 +33,8 @@ Route::apiResource('question', QuestionController::class)->middleware('auth:api'
 
 Route::apiResource('option', OptionController::class)->middleware('auth:api');
 
+Route::apiResource('event', OptionController::class)->middleware('auth:api');
+
 Route::any('/', function(){
     return response()->json([
         'error' => 'Bad Request'

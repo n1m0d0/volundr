@@ -12,6 +12,7 @@ class OptionController extends Controller
         $options =  Option::where('status', Option::Active)->get();
 
         return response()->json([
+            'code' => 200,
             'data' => $options
         ], 200);
     }
@@ -24,6 +25,7 @@ class OptionController extends Controller
     public function show(Option $option)
     {
         return response()->json([
+            'code' => 200,
             'data' => $option
         ], 200);
     }
