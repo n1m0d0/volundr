@@ -36,7 +36,7 @@ Route::apiResource('option', OptionController::class)->middleware('auth:api');
 
 Route::apiResource('event', OptionController::class)->middleware('auth:api');
 
-Route::get('event-form/{id}', [EventFormController::class, "form"])->middleware('auth:api');
+Route::get('event-form/{form}', [EventFormController::class, "form"])->middleware('auth:api');
 
 Route::any('/', function(){
     return response()->json([
