@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\OptionController;
+use App\Http\Controllers\EventFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::apiResource('question', QuestionController::class)->middleware('auth:api'
 Route::apiResource('option', OptionController::class)->middleware('auth:api');
 
 Route::apiResource('event', OptionController::class)->middleware('auth:api');
+
+Route::get('event-form/{id}', [EventFormController::class, "form"])->middleware('auth:api');
 
 Route::any('/', function(){
     return response()->json([

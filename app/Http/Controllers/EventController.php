@@ -16,10 +16,6 @@ class EventController extends Controller
     {
         $events = Event::where('status', Event::Active)->get();
 
-        foreach ($events as $event) {
-            $event->userEmail = $event->user->email;
-        }
-
         return response()->json([
             'code' => 200,
             'data' => $events
