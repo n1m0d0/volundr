@@ -51,6 +51,11 @@ class TypeSeeder extends Seeder
         $new_type->save();
 
         $new_type = new Type();
+        $new_type->name = "Hora";
+        $new_type->features = false;
+        $new_type->save();
+
+        $new_type = new Type();
         $new_type->name = "Imagen";
         $new_type->features = false;
         $new_type->save();
