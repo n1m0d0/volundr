@@ -41,11 +41,6 @@ class TypeSeeder extends Seeder
         $new_type->save();
 
         $new_type = new Type();
-        $new_type->name = "Seleccion Multiple";
-        $new_type->features = true;
-        $new_type->save();
-
-        $new_type = new Type();
         $new_type->name = "Fecha";
         $new_type->features = false;
         $new_type->save();
@@ -63,11 +58,6 @@ class TypeSeeder extends Seeder
         $new_type = new Type();
         $new_type->name = "Firma";
         $new_type->features = false;
-        $new_type->save();
-
-        $new_type = new Type();
-        $new_type->name = "Switch";
-        $new_type->features = true;
         $new_type->save();
     }
 }
