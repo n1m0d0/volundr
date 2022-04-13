@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\OptionController;
@@ -34,9 +35,10 @@ Route::apiResource('question', QuestionController::class)->middleware('auth:api'
 
 Route::apiResource('option', OptionController::class)->middleware('auth:api');
 
-Route::apiResource('event', OptionController::class)->middleware('auth:api');
+Route::apiResource('event', EventController::class)->middleware('auth:api');
 
 Route::get('event-form/{form}', [EventFormController::class, "form"])->middleware('auth:api');
+Route::post('event-form', [EventFormController::class, "save"])->middleware('auth:api');
 
 Route::any('/', function(){
     return response()->json([

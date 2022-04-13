@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('page.form') }}" :active="request()->routeIs('page.form')">
                         Formulario
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('page.event') }}" :active="request()->routeIs('page.event')">
+                        Evento
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -145,6 +148,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('page.form') }}" :active="request()->routeIs('page.form')">
                 Formulario
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('page.event') }}" :active="request()->routeIs('page.event')">
+                Event
             </x-jet-responsive-nav-link>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Form;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -23,5 +24,10 @@ class PageController extends Controller
     {
         $question = Question::find($id);
         return view('pages.option', compact('question'));
+    }
+
+    public function event()
+    {
+        return view('pages.event');
     }
 }

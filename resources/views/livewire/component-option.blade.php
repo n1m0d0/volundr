@@ -71,7 +71,7 @@
                             </td>
                             <td class="p-3 ">
                                 {{ $option->name }}
-                            </td>                           
+                            </td>
                             <td class="p-3 flex gap-1 items-center">
                                 <x-tooltip tooltip="Editar">
                                     <a wire:click='edit({{ $option->id }})' class="cursor-pointer">

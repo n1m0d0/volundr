@@ -23,4 +23,9 @@ class EventFormController extends Controller
             'data' => $form
         ], 200);
     }
+
+    public function save(Request $request)
+    {
+        dd($request);
+    }
 }

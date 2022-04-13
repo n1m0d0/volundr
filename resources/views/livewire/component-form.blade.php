@@ -128,7 +128,8 @@
                                 </x-tooltip>
                                 <x-tooltip tooltip="Preguntas">
                                     <a href="{{ route('page.question', $form->id) }}" class="cursor-pointer">
-                                        <x-fas-arrow-alt-circle-right class="w-6 h-6 text-blue-500 hover:text-gray-100" />
+                                        <x-fas-arrow-alt-circle-right
+                                            class="w-6 h-6 text-blue-500 hover:text-gray-100" />
                                     </a>
                                 </x-tooltip>
                             </td>
