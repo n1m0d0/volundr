@@ -19,7 +19,7 @@ class EventFormController extends Controller
             $options = Option::where('question_id', $question->id)->where('status', 1)->orderBy('order', 'ASC')->get();
             $question->options = $options;
         }
-        
+
         return response()->json([
             'code' => 200,
             'data' => $form
@@ -38,14 +38,29 @@ class EventFormController extends Controller
         $answers = $request->answers;
         $event_id = $event->id;
 
-        foreach ($answers as $answer)
-        {
+        foreach ($answers as $answer) {
             $register = new Answer();
             $register->event_id = $event_id;
             $register->question_id = $answer['question_id'];
-            $register->option_id = $answer['option_id'];
-            $register->input_data = $answer['input_data'];
-            $register->media_file = $answer['media_file'];
+            
+            if ($answer['option_id'] == 0) {
+                $register->option_id = null;
+            } else {
+                $register->option_id = $answer['option_id'];
+            }
+
+            if ($answer['input_data'] == 0) {
+                $register->input_data = null;
+            } else {
+                $register->input_data = $answer['input_data'];
+            }
+
+            if ($answer['media_file'] == 0) {
+                $register->media_file = null;
+            } else {
+                $register->media_file = $answer['media_file'];
+            }
+
             $register->save();
         }
         return response()->json([
