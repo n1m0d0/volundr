@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('option_id')->nullable();
             $table->text('input_data')->nullable();
             $table->mediumText('media_file')->nullable();
+            $table->timestamps();
 
             $table->foreign('event_id')->references('id')->on('events');
             $table->foreign('question_id')->references('id')->on('questions');

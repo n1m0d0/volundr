@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
+use App\Models\Event;
 use App\Models\Form;
 use App\Models\Option;
 use App\Models\Question;
@@ -26,6 +28,30 @@ class EventFormController extends Controller
 
     public function save(Request $request)
     {
-        dd($request);
+        $event = new Event();
+        $event->parent_id = $request->parent_id;
+        $event->form_id = $request->form_id;
+        $event->user_id = $request->user_id;
+        $event->registered = $request->registered;
+        $event->save();
+
+        $answers = $request->answers;
+        $event_id = $event->id;
+
+        foreach ($answers as $answer)
+        {
+            $register = new Answer();
+            $register->event_id = $event_id;
+            $register->question_id = $answer['question_id'];
+            $register->option_id = $answer['option_id'];
+            $register->input_data = $answer['input_data'];
+            $register->media_file = $answer['media_file'];
+            $register->save();
+        }
+        return response()->json([
+            'code' => 200,
+            'message' => "Registrado correctamente",
+            'event_id' => $event_id
+        ]);
     }
 }
