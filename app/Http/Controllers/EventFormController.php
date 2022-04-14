@@ -29,7 +29,12 @@ class EventFormController extends Controller
     public function save(Request $request)
     {
         $event = new Event();
-        $event->parent_id = $request->parent_id;
+        if($request->parent_id == 0){
+            $event->parent_id = null;
+        } else {
+            $event->parent_id = $request->parent_id;
+        }
+        
         $event->form_id = $request->form_id;
         $event->user_id = $request->user_id;
         $event->registered = $request->registered;
@@ -42,7 +47,7 @@ class EventFormController extends Controller
             $register = new Answer();
             $register->event_id = $event_id;
             $register->question_id = $answer['question_id'];
-            
+
             if ($answer['option_id'] == 0) {
                 $register->option_id = null;
             } else {
