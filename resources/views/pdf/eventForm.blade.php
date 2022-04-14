@@ -13,49 +13,51 @@
     <p>{{ $event->form->description }}</p>
     <br>
     @foreach ($event->form->questions->sortBy('order') as $question)
-        @foreach ($event->answers as $answer)
-            @if ($question->id == $answer->question_id)
-                @if ($answer->question->type->id == 1)
-                    <h3>{{ $answer->question->name }}</h3>
-                @endif
-                @if ($answer->question->type->id == 2)
-                    <p>{{ $answer->question->name }}</p>
-                    <br>
-                @endif
-                @if ($answer->question->type->id == 3)
-                    <h3>{{ $answer->question->name }}: <small
-                            class="text-muted">{{ $answer->input_data }}</small>
-                    </h3>
-                @endif
-                @if ($answer->question->type->id == 4)
-                    <h3>{{ $answer->question->name }}: <small
-                            class="text-muted">{{ $answer->input_data }}</small>
-                    </h3>
-                @endif
-                @if ($answer->question->type->id == 5)
-                    <h3>{{ $answer->question->name }}: <small
-                            class="text-muted">{{ $answer->option->name }}</small>
-                    </h3>
-                @endif
-                @if ($answer->question->type->id == 6)
-                    <h3>{{ $answer->question->name }}: <small
-                            class="text-muted">{{ $answer->input_data }}</small>
-                    </h3>
-                @endif
-                @if ($answer->question->type->id == 7)
-                    <h3>{{ $answer->question->name }}: <small
-                            class="text-muted">{{ $answer->input_data }}</small>
-                    </h3>
-                @endif
-                @if ($answer->question->type->id == 8)
-                    <h3>{{ $answer->question->name }}</h3>
-                    @php
-                        $base64 = 'data:image/jpeg;base64,' . $answer->media_file;
-                        echo '<img src="' . $base64 . '" width="200" height="120">';
-                    @endphp
-                @endif
+        @if ($question->type->id == 1)
+            <h3>{{ $question->name }}</h3>
+        @else
+            @if ($question->type->id == 2)
+                <p>{{ $question->name }}</p>
+                <br>
+            @else
+                @foreach ($event->answers as $answer)
+                    @if ($question->id == $answer->question_id)
+                        @if ($answer->question->type->id == 3)
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $answer->input_data }}</small>
+                            </h3>
+                        @endif
+                        @if ($answer->question->type->id == 4)
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $answer->input_data }}</small>
+                            </h3>
+                        @endif
+                        @if ($answer->question->type->id == 5)
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $answer->option->name }}</small>
+                            </h3>
+                        @endif
+                        @if ($answer->question->type->id == 6)
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $answer->input_data }}</small>
+                            </h3>
+                        @endif
+                        @if ($answer->question->type->id == 7)
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $answer->input_data }}</small>
+                            </h3>
+                        @endif
+                        @if ($answer->question->type->id == 8)
+                            <h3>{{ $answer->question->name }}</h3>
+                            @php
+                                $base64 = 'data:image/jpeg;base64,' . $answer->media_file;
+                                echo '<img src="' . $base64 . '" width="200" height="120">';
+                            @endphp
+                        @endif
+                    @endif
+                @endforeach
             @endif
-        @endforeach
+        @endif
     @endforeach
 </body>
 
