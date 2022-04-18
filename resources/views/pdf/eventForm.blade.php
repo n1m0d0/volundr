@@ -49,10 +49,25 @@
                         @endif
                         @if ($answer->question->type->id == 8)
                             <h3>{{ $answer->question->name }}</h3>
-                            @php
-                                $base64 = 'data:image/jpeg;base64,' . $answer->media_file;
-                                echo '<img src="' . $base64 . '" width="200" height="120">';
-                            @endphp
+                            @if ($answer->media_file == '')
+                                <small class="text-muted"></small>
+                            @else
+                                @php
+                                    $base64 = 'data:image/jpeg;base64,' . $answer->media_file;
+                                    echo '<img src="' . $base64 . '" width="200" height="120">';
+                                @endphp
+                            @endif
+                        @endif
+                        @if ($answer->question->type->id == 9)
+                            <h3>{{ $answer->question->name }}</h3>
+                            @if ($answer->media_file == '')
+                                <small class="text-muted"></small>
+                            @else
+                                @php
+                                    $base64 = 'data:image/jpeg;base64,' . $answer->media_file;
+                                    echo '<img src="' . $base64 . '" width="200" height="120">';
+                                @endphp
+                            @endif
                         @endif
                     @endif
                 @endforeach
