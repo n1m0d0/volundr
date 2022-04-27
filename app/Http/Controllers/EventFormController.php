@@ -33,11 +33,20 @@ class EventFormController extends Controller
             $event->parent_id = null;
         } else {
             $event->parent_id = $request->parent_id;
+            $eventParent = Event::find($request->parent_id);
+            $eventParent->status = Event::Finalized;
+            $eventParent->save();
         }
         
         $event->form_id = $request->form_id;
         $event->user_id = $request->user_id;
         $event->registered = $request->registered;
+
+        $form = Form::find($request->form_id);
+        if($form->forms == null) {
+            $event->status = Event::Finalized;
+        }
+
         $event->save();
 
         $answers = $request->answers;
@@ -67,7 +76,8 @@ class EventFormController extends Controller
             }
 
             $register->save();
-        }
+        }        
+
         return response()->json([
             'code' => 200,
             'message' => "Registrado correctamente",

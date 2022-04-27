@@ -60,7 +60,11 @@ class ComponentForm extends Component
         $this->validate();
 
         $form = new Form();
-        $form->parent_id = $this->parent_id;
+        if ($this->parent_id == "null") {
+            $form->parent_id = null;
+        } else {
+            $form->parent_id = $this->parent_id;
+        }
         $form->name = $this->name;
         $form->description = $this->description;
         $form->image = $this->image->store('public');
@@ -119,8 +123,16 @@ class ComponentForm extends Component
     public function delete()
     {
         $form = Form::find($this->form_id);
+        $form->parent_id = null;
         $form->status = Form::Inactive;
         $form->save();
+
+        $forms = Form::where('parent_id', $this->form_id)->get();
+        foreach ($forms as $form)
+        {
+            $form->parent_id = null;
+            $form->save();
+        }
 
         $this->clear();
         $this->deleteModal = false;

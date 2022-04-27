@@ -21,4 +21,14 @@ class Form extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function forms()
+    {
+        return $this->hasMany(Form::class, 'parent_id');
+    }
+
+    public function childForms()
+    {
+        return $this->hasMany(Form::class, 'parent_id')->with('forms');
+    }
 }

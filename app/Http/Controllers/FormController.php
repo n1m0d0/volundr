@@ -10,7 +10,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        $forms =  Form::where('status', Form::Active)->get();
+        $forms =  Form::where('status', Form::Active)->whereNull('parent_id')->get();
 
         foreach($forms as $form)
         {

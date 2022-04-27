@@ -99,6 +99,7 @@
                         <th class="p-3 text-left">Imagen</th>
                         <th class="p-3 text-left">Formulario</th>
                         <th class="p-3 text-left">Descripcion</th>
+                        <th class="p-3 text-left">Dependiente</th>
                         <th class="p-3 text-left">Acciones</th>
                     </tr>
                 </thead>
@@ -114,6 +115,11 @@
                             </td>
                             <td class="p-3 ">
                                 {{ $form->description }}
+                            </td>
+                            <td class="p-3 ">
+                                @foreach ($form->forms as $child)
+                                    {{ $child->name }}
+                                @endforeach
                             </td>
                             <td class="p-3 flex gap-1 items-center">
                                 <x-tooltip tooltip="Editar">
