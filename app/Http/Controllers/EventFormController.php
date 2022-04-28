@@ -43,7 +43,7 @@ class EventFormController extends Controller
         $event->registered = $request->registered;
 
         $form = Form::find($request->form_id);
-        if($form->forms == null) {
+        if(!$form->forms) {
             $event->status = Event::Finalized;
         }
 

@@ -34,7 +34,7 @@ class ComponentEvent extends Component
                 $query->where('name', 'like', '%' . $this->search . '%');
             });
         }
-        $events = $Query->where('status', Event::Active)->orderBy('id', 'DESC')->paginate(7);
+        $events = $Query->orderBy('id', 'DESC')->paginate(7);
         return view('livewire.component-event', compact('events'));
     }
 
