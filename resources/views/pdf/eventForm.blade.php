@@ -70,6 +70,13 @@
                             @endif
                         @endif
                     @endif
+                    @if ($answer->question->type->id == 10)
+                        @php
+                            $data = Answer::find($answer->input_data);
+                        @endphp
+                        <h3>{{ $answer->question->name }}: <small class="text-muted">{{ $data->input_data }}</small>
+                        </h3>
+                    @endif
                 @endforeach
             @endif
         @endif
