@@ -66,7 +66,7 @@ class EventFormController extends Controller
             $register->event_id = $event_id;
             $register->question_id = $answer['question_id'];
 
-            if ($answer['question_id'] = 3) {
+            if ($answer['question_id'] == 3) {
                 if ($answer['input_data'] == 0) {
                     $register->input_data = null;
                 } else {
@@ -74,7 +74,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 4) {
+            if ($answer['question_id'] == 4) {
                 if ($answer['input_data'] == 0) {
                     $register->input_data = null;
                 } else {
@@ -82,7 +82,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 5) {
+            if ($answer['question_id'] == 5) {
                 if ($answer['option_id'] == 0) {
                     $register->option_id = null;
                 } else {
@@ -90,7 +90,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 6) {
+            if ($answer['question_id'] == 6) {
                 if ($answer['input_data'] == 0) {
                     $register->input_data = null;
                 } else {
@@ -98,7 +98,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 7) {
+            if ($answer['question_id'] == 7) {
                 if ($answer['input_data'] == 0) {
                     $register->input_data = null;
                 } else {
@@ -106,7 +106,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 8) {
+            if ($answer['question_id'] == 8) {
                 if ($answer['media_file'] == 0) {
                     $register->media_file = null;
                 } else {
@@ -114,7 +114,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 9) {
+            if ($answer['question_id'] == 9) {
                 if ($answer['media_file'] == 0) {
                     $register->media_file = null;
                 } else {
@@ -122,7 +122,7 @@ class EventFormController extends Controller
                 }
             }
 
-            if ($answer['question_id'] = 10) {
+            if ($answer['question_id'] == 10) {
                 $register->input_data = $answer['option_id'];
             }
 
