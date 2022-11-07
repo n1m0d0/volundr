@@ -66,64 +66,22 @@ class EventFormController extends Controller
             $register->event_id = $event_id;
             $register->question_id = $answer['question_id'];
 
-            if ($answer['question_id'] == 3) {
-                if ($answer['input_data'] == 0) {
-                    $register->input_data = null;
-                } else {
-                    $register->input_data = $answer['input_data'];
-                }
+            if ($answer['option_id'] == 0) {
+                $register->option_id = null;
+            } else {
+                $register->option_id = $answer['option_id'];
             }
 
-            if ($answer['question_id'] == 4) {
-                if ($answer['input_data'] == 0) {
-                    $register->input_data = null;
-                } else {
-                    $register->input_data = $answer['input_data'];
-                }
+            if ($answer['input_data'] == 0) {
+                $register->input_data = null;
+            } else {
+                $register->input_data = $answer['input_data'];
             }
 
-            if ($answer['question_id'] == 5) {
-                if ($answer['option_id'] == 0) {
-                    $register->option_id = null;
-                } else {
-                    $register->option_id = $answer['option_id'];
-                }
-            }
-
-            if ($answer['question_id'] == 6) {
-                if ($answer['input_data'] == 0) {
-                    $register->input_data = null;
-                } else {
-                    $register->input_data = $answer['input_data'];
-                }
-            }
-
-            if ($answer['question_id'] == 7) {
-                if ($answer['input_data'] == 0) {
-                    $register->input_data = null;
-                } else {
-                    $register->input_data = $answer['input_data'];
-                }
-            }
-
-            if ($answer['question_id'] == 8) {
-                if ($answer['media_file'] == 0) {
-                    $register->media_file = null;
-                } else {
-                    $register->media_file = $answer['media_file'];
-                }
-            }
-
-            if ($answer['question_id'] == 9) {
-                if ($answer['media_file'] == 0) {
-                    $register->media_file = null;
-                } else {
-                    $register->media_file = $answer['media_file'];
-                }
-            }
-
-            if ($answer['question_id'] == 10) {
-                $register->input_data = $answer['option_id'];
+            if ($answer['media_file'] == 0) {
+                $register->media_file = null;
+            } else {
+                $register->media_file = $answer['media_file'];
             }
 
             $register->save();

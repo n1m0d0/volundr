@@ -27,26 +27,31 @@
                                     class="text-muted">{{ $answer->input_data }}</small>
                             </h3>
                         @endif
+
                         @if ($answer->question->type->id == 4)
                             <h3>{{ $answer->question->name }}: <small
                                     class="text-muted">{{ $answer->input_data }}</small>
                             </h3>
                         @endif
+
                         @if ($answer->question->type->id == 5)
                             <h3>{{ $answer->question->name }}: <small
                                     class="text-muted">{{ $answer->option->name }}</small>
                             </h3>
                         @endif
+
                         @if ($answer->question->type->id == 6)
                             <h3>{{ $answer->question->name }}: <small
                                     class="text-muted">{{ $answer->input_data }}</small>
                             </h3>
                         @endif
+
                         @if ($answer->question->type->id == 7)
                             <h3>{{ $answer->question->name }}: <small
                                     class="text-muted">{{ $answer->input_data }}</small>
                             </h3>
                         @endif
+
                         @if ($answer->question->type->id == 8)
                             <h3>{{ $answer->question->name }}</h3>
                             @if ($answer->media_file == '')
@@ -58,6 +63,7 @@
                                 @endphp
                             @endif
                         @endif
+
                         @if ($answer->question->type->id == 9)
                             <h3>{{ $answer->question->name }}</h3>
                             @if ($answer->media_file == '')
@@ -69,13 +75,15 @@
                                 @endphp
                             @endif
                         @endif
-                    @endif
-                    @if ($answer->question->type->id == 10)
-                        @php
-                            $data = Answer::find($answer->input_data);
-                        @endphp
-                        <h3>{{ $answer->question->name }}: <small class="text-muted">{{ $data->input_data }}</small>
-                        </h3>
+
+                        @if ($answer->question->type->id == 10)
+                            @php
+                                $data = App\Models\Answer::find($answer->input_data);
+                            @endphp
+                            <h3>{{ $answer->question->name }}: <small
+                                    class="text-muted">{{ $data->input_data }}</small>
+                            </h3>
+                        @endif
                     @endif
                 @endforeach
             @endif
