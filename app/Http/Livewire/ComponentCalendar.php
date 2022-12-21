@@ -8,6 +8,7 @@ class ComponentCalendar extends Component
 {
     public function render()
     {
-        return view('livewire.component-calendar');
+        $calendar = null;
+        return view('livewire.component-calendar', compact('calendar'));
     }
 }
