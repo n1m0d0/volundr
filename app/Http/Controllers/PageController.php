@@ -42,7 +42,7 @@ class PageController extends Controller
         return view('pages.special', compact('question'));
     }
 
-    public function calendar($id)
+    public function calendar()
     {
         return view('pages.calendar');
     }
