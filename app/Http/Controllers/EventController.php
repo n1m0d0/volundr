@@ -101,6 +101,12 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        //
+        $event->status = Event::Finalized;
+        $event->save();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Successfully finalize event'
+        ], 200);
     }
 }
